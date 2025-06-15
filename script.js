@@ -16,8 +16,8 @@ function GameBoard(){
     const checkWinner = () => {
         let flag = true;
         for(let i = 0; i < 3; i++){
-            for(let j = 0; j < 3; j++){if(board[i][j].getValue() === 0){flag = false; break;}}
-            if(board[i][0].getValue() === board[i][1].getValue() && board[i][1].getValue() === board[i][2].getValue){
+            for(let j = 0; j < 3; j++){if(board[i][j].getValue() === 0){flag = false;}}
+            if(board[i][0].getValue() === board[i][1].getValue() && board[i][1].getValue() === board[i][2].getValue()){
                 if(board[i][0].getValue() !== 0)
                     return board[i][0].getValue();
             }
@@ -88,7 +88,7 @@ function ScreenController(){
         const board = game.getBoard();
         const activePlayer = game.getActivePlayer();
 
-        let val = game.checkWinner();
+        let val = game.checkWinner();//console.log(val);
         if(val !== 0){
             if(val === 1) playerTurnDiv.textContent = `Player One Wins`;
             if(val === 2) playerTurnDiv.textContent = `Player Two Wins`;
